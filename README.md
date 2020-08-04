@@ -2,7 +2,7 @@
 
 <b>-- General Information</b>
 ```
-   Coming soon.
+   Reference: A Top-Down Neural Architecture towards Text-Level Discourse Parsing of Discourse Rhetorical Structure. Longyin Zhang, Yuqing Xing, Fang Kong, Peifeng Li, and Guodong Zhou.
 ```
 
 ```
