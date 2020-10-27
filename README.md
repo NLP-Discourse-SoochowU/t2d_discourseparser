@@ -12,6 +12,14 @@
 - 安装 java 并放入系统路径（调用 Berkeley Parser 需要）
 - requirements.txt 中的 python 依赖，可以用 `pip3 install -r requirements.txt` 安装
 
+#### 数据 (The CDTB corpus)
+```
+So far, the Chinese CDTB corpus has not been released for free download. 
+You need to sign a copyright agreement to get the corpus, which is only for educational use. 
+Please contact us.
+Email: lyzhang9@stu.suda.edu.cn
+```
+
 #### 工程结构
 ```
 ---ChineseDiscourseParser
