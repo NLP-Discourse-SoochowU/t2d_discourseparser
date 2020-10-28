@@ -14,9 +14,7 @@
 
 #### 数据 (The CDTB corpus)
 ```
-So far, the Chinese CDTB corpus has not been released for free download. 
-You need to sign a copyright agreement to get the corpus, which is only for educational use. 
-Please contact us.
+So far, the Chinese CDTB corpus has not been released for download.
 Email: lyzhang9@stu.suda.edu.cn
 ```
 
