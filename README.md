@@ -15,7 +15,6 @@
 #### 数据 (The CDTB corpus)
 ```
 So far, the Chinese CDTB corpus has not been released for download.
-Email: lyzhang9@stu.suda.edu.cn
 ```
 
 #### 工程结构
