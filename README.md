@@ -2,15 +2,17 @@
 
 <b>-- General Information</b>
 ```
-   This project displays the top-down DRS parser described in our previous paper "Longyin Zhang, Yuqing Xing, Fang Kong, 
-   Peifeng Li, and Guodong Zhou. A Top-Down Neural Architecture towards Text-Level Discourse Parsing of Discourse Rhetorical 
-   Structure" in ACL2020. For techinical details, please refer to the paper.
+   This project displays the top-down DRS parser described in our previous paper 
+   "Longyin Zhang, Yuqing Xing, Fang Kong, Peifeng Li, and Guodong Zhou. 
+   A Top-Down Neural Architecture towards Text-Level Discourse Parsing 
+   of Discourse Rhetorical Structure" in ACL2020. For techinical details, 
+   please refer to the paper.
    
    Some people are confused about our evaluation methods, we provide a more detailed description here. 
-   For Chinese, we used the original Parseval for evaluation [Morey et al., 2017]. Moreover, like many previous studies, 
-   we calculate macro-averaged F1 scores for Chinese trees. 
-   For English, we also used the original Parseval for evaluation. At the same time, following previous studies, we 
-   report our micro-averaged F1 scores.
+   For Chinese, we used the original Parseval for evaluation [Morey et al., 2017]. Moreover, like 
+   many previous studies, we calculate macro-averaged F1 scores for Chinese trees. 
+   For English, we also used the original Parseval for evaluation. At the same time, following previous 
+   studies, we report our micro-averaged F1 scores.
 ```
 
 #### 安装介绍
