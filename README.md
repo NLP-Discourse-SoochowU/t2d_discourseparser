@@ -12,7 +12,7 @@
    For Chinese, we used the original Parseval for evaluation [Morey et al., 2017]. Moreover, like 
    many previous studies, we calculate macro-averaged F1 scores for Chinese trees. 
    For English, we also used the original Parseval for evaluation. At the same time, following previous 
-   studies, we report our micro-averaged F1 scores.
+   studies, we report our micro-averaged F1 scores for fair compraison.
 ```
 
 #### 安装介绍
