@@ -75,46 +75,45 @@ python3 parse.py sample.txt sample.xml -schema topdown -segmenter_name gcn --enc
 Run the following command for performance evaluation: 
 `python3 evaluate.py data [--ctb_dir ctb_dir] [-schema topdown|shiftreduce] [-segmenter_name svm|gcn] [-use_gold_edu] [--use_gpu]`
 
-- data： path of the CDTB corpus;
-- ctb_dir： CTB 语料路径，可以给定 data/CTB 则用标准句法，也可以给定 data/CTB_auto 则使用自动句法
-- cache_dir: 存放和加载预处理后的语料缓存路径
-- schema： 需要评价的解析策略
-- segmenter_name：使用的 EDU 分割器
-- use_gold_edu： 使用该参数则使用标准的 EDU 分割重新构建关系评价最后的性能
-- use_gpu 是否使用 GPU
+- data: the path of the CDTB corpus;
+- ctb_dir: the path of the CTB corpus with CTB based on gold standard syntax and CTB_auto based on auto-syntax;
+- cache_dir: the path of cached data;
+- schema: the evaluation method to use;
+- segmenter_name: the EDU segmenter to use; 
+- use_gold_edu: whether use Gold EDU or not;
+- use_gpu: use GPU or not.
 
-如需要评价使用标准 EDU 和标准句法时，topdown 解析方法的篇章解析性能：
+E.g., if use gold EDU and gold syntax for top-down parsing, run:
 ```shell
 python3 evaluate.py data/CDTB --ctb_dir data/CTB --cache_dir data/cache  -schema topdown --use_gold_edu
 ```
 
-3. 训练模型
+3. model training
 
-为避免 python 依赖关系的问题，模型的所有 python 文件的调用和引用都是从根目录算起。比如我们打算重新训练 segmenter 下面的 GCN 分割器，
-我们使用 `segmenter/gcn/train.py` 脚本，那么调用方法为：
-
+Taking EDU segmentation for eaxmple:
 ```shell
 python -m segmenter.gcn.train /data/csun/ChineseDiscourseParser/data/CDTB -model_save data/models/segmenter.gcn.model -pretrained data/pretrained/sgns.renmin.word --ctb_dir data/CTB --cache_dir data/cache --w2v_freeze --use_gpu
 ```
 
 
-#### 关键类和接口介绍
+#### Key classes and interfaces
 
 1. SegmenterI
 
 分割器的接口，包括将段落切分为句子、将句子切分 EDU 和将段落一步切分为 EDU 三个接口。
+The splitter has three interfaces for segmenting paragraphs into sentences, segmenting sentences into EDU, and segmenting paragraphs into EDU in one step.
 
 2. ParserI
 
-解析器接口，包括将只包含 EDU 的段落组织为篇章树的方法。
+The parser interface, including a method to organize paragraphs containing only EDU into a chapter tree.
 
 3. PipelineI
 
-流水线类，将 SegmenterI 和 ParserI 具体实现组装起来作为完整的篇章结构解析器。
+Pipeline class, which assembles SegmenterI and ParserI as a complete text structure parser.
 
-4. EDU、Relation、Sentence、Paragraph、Discourse
+4. EDU, Relation, Sentence, Paragraph, and Discourse
 
-分别对应 EDU、关系、句子、段落和篇章的数据结构，可以看成包含列表的列表容器，Paragraph表示篇章树，可以调用 draw 方法可视化。
+They correspond to the data structure of EDU, relation, sentence, paragraph, and chapter respectively. They can be regarded as a list container containing lists. Paragraph represents the chapter tree and can be visualized by calling the draw method.
 
 ```
 
