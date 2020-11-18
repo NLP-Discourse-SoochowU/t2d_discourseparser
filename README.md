@@ -49,7 +49,7 @@
  |-pipeline.py  / a pipelined framework
 ```
 
-##### Functions
+##### Project Functions
 
 1. DRS parsing
 
@@ -70,12 +70,12 @@ E.g., parsing the three paragraphs in `sample.txt` in a top-down mode with GCN-b
 python3 parse.py sample.txt sample.xml -schema topdown -segmenter_name gcn --encoding utf-8 --draw
 ```
 
-2. 性能评价
+2. performance evaluation
 
-性能评价使用 `evaluate.py` 脚本完成，包含如下参数：
+Run the following command for performance evaluation: 
 `python3 evaluate.py data [--ctb_dir ctb_dir] [-schema topdown|shiftreduce] [-segmenter_name svm|gcn] [-use_gold_edu] [--use_gpu]`
 
-- data： CDTB 语料库路径
+- data： path of the CDTB corpus;
 - ctb_dir： CTB 语料路径，可以给定 data/CTB 则用标准句法，也可以给定 data/CTB_auto 则使用自动句法
 - cache_dir: 存放和加载预处理后的语料缓存路径
 - schema： 需要评价的解析策略
