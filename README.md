@@ -54,7 +54,9 @@
 1. DRS parsing
 
 Run the following command for DRS parsing:
-`python3 parser.py source save [-schema schema_name] [-segmenter_name segmenter_name] [--encoding utf-8] [--draw] [--use_gpu]`
+```shell
+python3 parser.py source save [-schema schema_name] [-segmenter_name segmenter_name] [--encoding utf-8] [--draw] [--use_gpu]
+```
 
 - source： 输入为文本文件路径，每行包含一个段落 / the path of input texts where each line refers to a paragraph;
 - save: 存储 xml 文件路径，输入文本文件中的每一行会解析为一个段落节点 / path to save the parse trees;
