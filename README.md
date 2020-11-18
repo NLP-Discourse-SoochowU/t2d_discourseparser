@@ -33,38 +33,38 @@
  |-pyltp_models  / third-party models of pyltp
  |-segmenter  / EDU segmentation
  |   |- gcn / GCN based EDU segmenter
- |   |-rnn  基于 LSTM 的自动 EDU 分割器
- |   |-svm  基于逗号分类的 EDU 分割器
- |-structure  与篇章树结构相关的数据结构
- |   |-nodes.py  定义了树的各类节点和方法
- |   |-vocab.py  定义了模型用的词表
- |-treebuilder  树的结构生成
- |   |-partptr  基于指针网络的自顶向下的篇章结构解析器
- |   |-shiftreduce  基于转移的中文篇章结构解析器
- |-util   工具类和方法
- |   |-berkeley.py  包装好的 Python 调用 Berkeley Parser 的方法类
- |   |-eval.py  性能评价方法
- |   |-ltp.py  包装好的 PyLTP 工具类
- |-evaluate.py  评价脚本
- |-interface.py  接口和抽象类
- |-parser.py  篇章解析脚本
- |-pipeline.py  定义了不同的解析流水线类
+ |   |-rnn  / LSTM-based EDU segmenter
+ |   |-svm  / SVM-based EDU segmenter 
+ |-structure / tree structures
+ |   |-nodes.py  / tree nodes 
+ |   |-vocab.py  / vocabolary list
+ |-treebuilder  / tree parser
+ |   |-partptr  / the top-down DRS parser
+ |   |-shiftreduce  / the transition-based DRS parser 
+ |-util  / some utils
+ |   |-berkeley.py  / functions of Berkeley Parser 
+ |   |-eval.py / evaluation methods
+ |   |-ltp.py  / PyLTP tools
+ |-evaluate.py  / evaluation
+ |-interface.py 
+ |-parser.py  / parsing with pre-trained parsers
+ |-pipeline.py  / a pipelined framework
 ```
 
-##### 功能
+##### Functions
 
-1. 篇章解析
+1. DRS parsing
 
-篇章解析使用 `parse.py` 脚本完成，`parse.py`的参数如下：
+Run the following command for DRS parsing:
 `python3 parser.py source save [-schema schema_name] [-segmenter_name segmenter_name] [--encoding utf-8] [--draw] [--use_gpu]`
 
-- source： 输入为文本文件路径，每行包含一个段落
-- save: 存储 xml 文件路径，输入文本文件中的每一行会解析为一个段落节点
-- schema： 解析策略，目前实现了两种解析策略，`topdown` 和 `shiftreduce`，具体实现在 pipeline.py 中，默认使用 `topdown`
-- segmenter_name：EDU 自动分割器名称，目前实现了两个 EDU 分割器, `svm` 和 `gcn`，默认使用 `svm`
-- encoding： 输入和输出文件的编码，默认 UTF-8
-- draw: 是否在解析完每个段落后可视化篇章树，需要有图形界面和安装了 tkinter
-- use_gpu：是否使用 GPU 进行解析，默认使用 cpu
+- source： 输入为文本文件路径，每行包含一个段落 / the path of input texts where each line refers to a paragraph;
+- save: 存储 xml 文件路径，输入文本文件中的每一行会解析为一个段落节点 / path to save the parse trees;
+- schema： 解析策略，目前实现了两种解析策略，`topdown` 和 `shiftreduce`，具体实现在 pipeline.py 中，默认使用 `topdown` / different parsing stratedies;
+- segmenter_name：EDU 自动分割器名称，目前实现了两个 EDU 分割器, `svm` 和 `gcn`，默认使用 `svm` / different segmentation stratedies;
+- encoding： 输入和输出文件的编码，默认 UTF-8 / encoding format, UTF-8 in default;
+- draw: 是否在解析完每个段落后可视化篇章树，需要有图形界面和安装了 tkinter / whether draw the tree or not;
+- use_gpu：是否使用 GPU 进行解析，默认使用 cpu  / use GPU or not;
 
 如使用该脚本对 `sample.txt` 中的三个段落使用 topdown 策略和 GCN 子句分割器进行分割，并且可视化每个解析结果，使用如下命令：
 
