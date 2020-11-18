@@ -100,7 +100,6 @@ python -m segmenter.gcn.train /data/csun/ChineseDiscourseParser/data/CDTB -model
 
 1. SegmenterI
 
-分割器的接口，包括将段落切分为句子、将句子切分 EDU 和将段落一步切分为 EDU 三个接口。
 The splitter has three interfaces for segmenting paragraphs into sentences, segmenting sentences into EDU, and segmenting paragraphs into EDU in one step.
 
 2. ParserI
