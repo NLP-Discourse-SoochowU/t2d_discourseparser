@@ -120,7 +120,7 @@ They correspond to the data structure of EDU, relation, sentence, paragraph, and
 Due to our negligence, there is a certain error in the description of the evaluation method of the Chinese parser 
 in the conference paper, we will correct it here. For Chinese DRS parsing, we used the original Parseval for 
 evaluation [Morey et al., 2017]. Moreover, like many previous studies, we reported the macro-averaged F1-scores 
-for the Chinese DRS trees.  We've updated our paper and published it on the arxiv: https://arxiv.org/user/coming_soon.
+for the Chinese DRS trees.  We've updated our paper and published it on arxiv: https://arxiv.org/user/coming_soon.
 ```
 
 <b>-- License</b>
