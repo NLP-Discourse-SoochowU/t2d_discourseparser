@@ -2,10 +2,9 @@
 
 <b>-- General Information</b>
 ```
-   This project displays the top-down DRS parser described in our previous paper 
-   "Longyin Zhang, Yuqing Xing, Fang Kong, Peifeng Li, and Guodong Zhou. 
-   A Top-Down Neural Architecture towards Text-Level Discourse Parsing 
-   of Discourse Rhetorical Structure" in ACL2020. For techinical details, 
+   This project displays the top-down DRS parser described in our previous paper "Longyin Zhang, 
+   Yuqing Xing, Fang Kong, Peifeng Li, and Guodong Zhou. A Top-Down Neural Architecture towards 
+   Text-Level Discourse Parsing of Discourse Rhetorical Structure" in ACL2020. For techinical details, 
    please refer to the paper.
 ```
 
