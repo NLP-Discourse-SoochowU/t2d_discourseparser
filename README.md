@@ -9,30 +9,30 @@
    please refer to the paper.
 ```
 
-#### 安装介绍
+#### Installation
 - Python 3.6
-- 安装 java 并放入系统路径（调用 Berkeley Parser 需要）
-- requirements.txt 中的 python 依赖，可以用 `pip3 install -r requirements.txt` 安装
+- java for the use of Berkeley Parser
+- other packages in requirements.txt
 
-#### 工程结构
+#### Project Structure
 ```
 ---ChineseDiscourseParser
- |-berkeleyparser Berkeley词法解析器
- |-data  语料库和模型等资源文件
- |   |-cache 预处理语料的缓存
- |   |-CDTB  CDTB 语料
- |   |-CTB   ChineseTreebank 语料
- |   |-CTB_auto 预先使用 Berkeley Parser 重新解析 CTB 句子的词法信息文件
- |   |-log  tensorboard 日志文件
- |   |-models  训练好的模型
- |   |-pretrained  词向量
- |-dataset  语料库操作工具类
- |   |-cdtb  CDTB 语料库工具类，包括加载CDTB CTB、读写、预处理等
- |-pub  发布的信息
- |-models 本任务相关的训练好的模型
- |-pyltp_models  pyltp第三方工具使用的模型
- |-segmenter  EDU 自动分割器
- |   |- gcn 基于 GCN 的自动 EDU 分割器
+ |-berkeleyparser Berkeley
+ |-data / corpus and models
+ |   |-cache / processed data
+ |   |-CDTB / the CDTB corpus
+ |   |-CTB  / the ChineseTreebank corpus
+ |   |-CTB_auto / use Berkeley Parser to parse CTB sentences
+ |   |-log / tensorboard log files
+ |   |-models / selected model
+ |   |-pretrained / word vectors
+ |-dataset  / utils for data utilization 
+ |   |-cdtb / utils for CDTB processing
+ |-pub  
+ |-models / related pre-trained models
+ |-pyltp_models  / third-party models of pyltp
+ |-segmenter  / EDU segmentation
+ |   |- gcn / GCN based EDU segmenter
  |   |-rnn  基于 LSTM 的自动 EDU 分割器
  |   |-svm  基于逗号分类的 EDU 分割器
  |-structure  与篇章树结构相关的数据结构
