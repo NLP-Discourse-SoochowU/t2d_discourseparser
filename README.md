@@ -66,7 +66,7 @@ Run the following command for DRS parsing:
 - draw: 是否在解析完每个段落后可视化篇章树，需要有图形界面和安装了 tkinter / whether draw the tree or not;
 - use_gpu：是否使用 GPU 进行解析，默认使用 cpu  / use GPU or not;
 
-E.g., parsing the three paragraphs in `sample.txt` in a top-down model with GCN-based EDU segmentation and drawing them out:
+E.g., parsing the three paragraphs in `sample.txt` in a top-down mode with GCN-based EDU segmentation and drawing them out:
 
 ```shell
 python3 parse.py sample.txt sample.xml -schema topdown -segmenter_name gcn --encoding utf-8 --draw
