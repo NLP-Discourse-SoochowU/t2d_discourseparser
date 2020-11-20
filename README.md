@@ -117,7 +117,7 @@ Pipeline class, which assembles SegmenterI and ParserI as a complete text struct
 They correspond to the data structure of EDU, relation, sentence, paragraph, and chapter respectively. They can be regarded as a list container containing lists. Paragraph represents the chapter tree and can be visualized by calling the draw method.
 
 
-#### Update on the inaccurate expression in conference papers
+#### Update the conference paper
 
 Due to our negligence, there is a certain error in the description of the evaluation method of the Chinese parser 
 in the conference paper, we will correct it here. For Chinese DRS parsing, we used the original Parseval for 
