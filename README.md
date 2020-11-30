@@ -1,4 +1,4 @@
-## Transition based Bottom-up RST-style Text-level Discourse Parser
+## Top-down Text-level DRS Parser
 
 <b>-- General Information</b>
 ```
