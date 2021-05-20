@@ -287,22 +287,22 @@ if __name__ == '__main__':
     arg_parser = argparse.ArgumentParser()
 
     # dataset parameters
-    arg_parser.add_argument("--data", default="data/CDTB")
-    arg_parser.add_argument("--ctb_dir", default="data/CTB")
-    arg_parser.add_argument("--cache_dir", default="data/cache")
+    arg_parser.add_argument("data")
+    arg_parser.add_argument("--ctb_dir")
+    arg_parser.add_argument("--cache_dir")
 
     # model parameters
     arg_parser.add_argument("-hidden_size", default=512, type=int)
     arg_parser.add_argument("-dropout", default=0.33, type=float)
-    # w2v_group = arg_parser.add_mutually_exclusive_group(required=True)
-    arg_parser.add_argument("-pretrained", default="data/pretrained/sgns.renmin.word")
-    arg_parser.add_argument("-w2v_size", type=int)
+    w2v_group = arg_parser.add_mutually_exclusive_group(required=True)
+    w2v_group.add_argument("-pretrained")
+    w2v_group.add_argument("-w2v_size", type=int)
     arg_parser.add_argument("-pos_size", default=30, type=int)
     arg_parser.add_argument("-split_mlp_size", default=64, type=int)
     arg_parser.add_argument("-nuc_mlp_size", default=32, type=int)
     arg_parser.add_argument("-rel_mlp_size", default=128, type=int)
     arg_parser.add_argument("--w2v_freeze", dest="w2v_freeze", action="store_true")
-    arg_parser.set_defaults(w2v_freeze=True)
+    arg_parser.set_defaults(w2v_freeze=False)
 
     # train parameters
     arg_parser.add_argument("-epoch", default=20, type=int)
@@ -318,6 +318,6 @@ if __name__ == '__main__':
     arg_parser.add_argument("-model_save", default="data/models/treebuilder.partptr.model")
     arg_parser.add_argument("--seed", default=21, type=int)
     arg_parser.add_argument("--use_gpu", dest="use_gpu", action="store_true")
-    arg_parser.set_defaults(use_gpu=True)
+    arg_parser.set_defaults(use_gpu=False)
 
     main(arg_parser.parse_args())

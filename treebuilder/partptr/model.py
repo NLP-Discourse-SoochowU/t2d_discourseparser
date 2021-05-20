@@ -3,7 +3,6 @@ import torch
 import torch.nn as nn
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 import torch.nn.functional as F
-import numpy as np
 
 
 class MaskedGRU(nn.Module):
@@ -47,13 +46,9 @@ class BiGRUEDUEncoder(nn.Module):
         self.output_size = hidden_size
 
     def forward(self, inputs, masks):
-        print(masks.size())
         lengths = masks.sum(-1)
-        input(lengths.size())
         outputs, hidden = self.rnn(inputs, lengths)
-        print(self.token_scorer(outputs).size())
         token_score = self.token_scorer(outputs).squeeze(-1)
-        input(token_score.szie())
         token_score[masks == 0] = -1e8
         token_score = token_score.softmax(dim=-1) * masks.float()
         weighted_sum = (outputs * token_score.unsqueeze(-1)).sum(-2)
@@ -147,9 +142,9 @@ class BiaffineAttention(nn.Module):
         # [batch, length_encoder, hidden_size]
         d_outputs = self.d_mlp(d_outputs)
 
-        # [batch, num_labels, length_encoder, 1]
+        # [batch, num_labels, 1, length_encoder]
         out_e = (self.W_e @ e_outputs.transpose(1, 2)).unsqueeze(2)
-        # [batch, num_labels, 1, length_decoder]
+        # [batch, num_labels, length_decoder, 1]
         out_d = (self.W_d @ d_outputs.transpose(1, 2)).unsqueeze(3)
 
         # [batch, 1, length_decoder, hidden_size] @ [num_labels, hidden_size, hidden_size]
@@ -204,89 +199,20 @@ class PartitionPtr(nn.Module):
         self.rel_classifier = BiaffineAttention(self.encoder.output_size, self.decoder.output_size, len(self.rel_label),
                                                 rel_mlp_size)
 
-    def forward(self, session):
-        return self.decode(session)
+    def forward(self, left, right, memory, state):
+        return self.decode(left, right, memory, state)
 
-    class Session:
-        def __init__(self, memory, state):
-            self.n = memory.size(1) - 2
-            self.step = 0
-            self.memory = memory
-            self.state = state
-            self.stack = [(0, self.n + 1)]
-            self.scores = np.zeros((self.n, self.n+2), dtype=np.float)
-            self.splits = []
-            self.nuclears = []
-            self.relations = []
-
-        def forward(self, score, state, split, nuclear, relation):
-            left, right = self.stack.pop()
-            if right - split > 1:
-                self.stack.append((split, right))
-            if split - left > 1:
-                self.stack.append((left, split))
-            self.splits.append((left, split, right))
-            self.nuclears.append(nuclear)
-            self.relations.append(relation)
-            self.state = state
-            self.scores[self.step] = score
-            self.step += 1
-            return self
-
-        def terminate(self):
-            return self.step >= self.n
-
-        def __repr__(self):
-            return "[step %d]memory size: %s, state size: %s\n stack:\n%s\n, scores:\n %s" % \
-                   (self.step, str(self.memory.size()), str(self.state.size()),
-                    "\n".join(map(str, self.stack)) or "[]",
-                    str(self.scores))
-
-        def __str__(self):
-            return repr(self)
-
-    def init_session(self, edus):
-        edu_words = [edu.words for edu in edus]
-        edu_poses = [edu.tags for edu in edus]
-        max_word_seqlen = max(len(words) for words in edu_words)
-        edu_seqlen = len(edu_words)
-
-        e_input_words = np.zeros((1, edu_seqlen, max_word_seqlen), dtype=np.long)
-        e_input_poses = np.zeros_like(e_input_words)
-        e_input_masks = np.zeros_like(e_input_words, dtype=np.uint8)
-
-        for i, (words, poses) in enumerate(zip(edu_words, edu_poses)):
-            e_input_words[0, i, :len(words)] = [self.word_vocab[word] for word in words]
-            e_input_poses[0, i, :len(poses)] = [self.pos_vocab[pos] for pos in poses]
-            e_input_masks[0, i, :len(words)] = 1
-
-        e_input_words = torch.from_numpy(e_input_words).long()
-        e_input_poses = torch.from_numpy(e_input_poses).long()
-        e_input_masks = torch.from_numpy(e_input_masks).byte()
-
-        if self.use_gpu:
-            e_input_words = e_input_words.cuda()
-            e_input_poses = e_input_poses.cuda()
-            e_input_masks = e_input_masks.cuda()
-
-        edu_encoded, e_masks = self.encode_edus((e_input_words, e_input_poses, e_input_masks))
-        memory, _, context = self.encoder(edu_encoded, e_masks)
-        state = self.context_dense(context).unsqueeze(0)
-        return PartitionPtr.Session(memory, state)
-
-    def decode(self, session):
-        left, right = session.stack[-1]
-        d_input = torch.cat([session.memory[0, left], session.memory[0, right]]).view(1, 1, -1)
-        d_output, state = self.decoder(d_input, session.state)
-
-        masks = torch.zeros(1, 1, session.n+2, dtype=torch.uint8)
+    def decode(self, left, right, memory, state):
+        d_input = torch.cat([memory[0, left], memory[0, right]]).view(1, 1, -1)
+        d_output, state = self.decoder(d_input, state)
+        masks = torch.zeros(1, 1, memory.size(1), dtype=torch.uint8)
         masks[0, 0, left+1:right] = 1
         if self.use_gpu:
             masks = masks.cuda()
-        split_scores = self.split_attention(session.memory, d_output, masks)
+        split_scores = self.split_attention(memory, d_output, masks)
         split_scores = split_scores.softmax(dim=-1)
-        nucs_score = self.nuc_classifier(session.memory, d_output).softmax(dim=-1) * masks.unsqueeze(-1).float()
-        rels_score = self.rel_classifier(session.memory, d_output).softmax(dim=-1) * masks.unsqueeze(-1).float()
+        nucs_score = self.nuc_classifier(memory, d_output).softmax(dim=-1) * masks.unsqueeze(-1).float()
+        rels_score = self.rel_classifier(memory, d_output).softmax(dim=-1) * masks.unsqueeze(-1).float()
         split_scores = split_scores[0, 0].cpu().detach().numpy()
         nucs_score = nucs_score[0, 0].cpu().detach().numpy()
         rels_score = rels_score[0, 0].cpu().detach().numpy()
