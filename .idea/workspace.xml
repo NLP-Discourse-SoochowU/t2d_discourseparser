@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1db2021f-b539-4c18-84d5-28bd13ae3014" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dataset/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/cdtb.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/structure/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/structure/nodes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/structure/vocab.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/treebuilder/partptr/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/treebuilder/partptr/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/treebuilder/partptr/parser.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/treebuilder/partptr/train.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/eval.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,10 +11,34 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/eval.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-343" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LICENSE">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="56" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/LICENSE" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="28" />
@@ -48,6 +61,11 @@
               <item name="t2d_discourseparser" type="b2602c69:ProjectViewProjectNode" />
               <item name="t2d_discourseparser" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="t2d_discourseparser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="t2d_discourseparser" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -60,6 +78,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -83,15 +106,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1621475776557</updated>
-      <workItem from="1621475778328" duration="592000" />
+      <workItem from="1621475778328" duration="635000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="592000" />
+    <option name="totallyTimeSpent" value="635000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1280" height="772" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959612" />
@@ -122,6 +146,18 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sample.txt">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/eval.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-343" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="56" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
