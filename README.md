@@ -8,7 +8,7 @@
 ```
 
 #### Installation
-- Python 3.6
+- Python 3.6 
 - java for the use of Berkeley Parser
 - other packages in requirements.txt
 
