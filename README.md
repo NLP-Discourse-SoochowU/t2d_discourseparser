@@ -1,5 +1,8 @@
 ## Top-down Text-level DRS Parser
 
+I often fail to access GitHub, so email me directly if you have any questions.
+E-mail Address: zzlynx@outlook.com.
+
 <b>-- General Information</b>
 ```
    This project presents the top-down DRS parser described in the paper "Longyin Zhang, 
