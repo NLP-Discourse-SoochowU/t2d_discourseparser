@@ -2,9 +2,9 @@
 
 <b>-- General Information</b>
 ```
-   This project presents the top-down DRS parser described in "Longyin Zhang, Yuqing Xing, 
-   Fang Kong, Peifeng Li, and Guodong Zhou. A Top-Down Neural Architecture towards Text-Level 
-   Parsing of Discourse Rhetorical Structure" in ACL2020.
+   This project presents the top-down DRS parser described in the paper "Longyin Zhang, 
+   Yuqing Xing, Fang Kong, Peifeng Li, and Guodong Zhou. A Top-Down Neural Architecture 
+   towards Text-Level Parsing of Discourse Rhetorical Structure (ACL2020)".
 ```
 
 #### Installation
@@ -115,6 +115,14 @@ Pipeline class, which assembles SegmenterI and ParserI as a complete text struct
 4. EDU, Relation, Sentence, Paragraph, and Discourse
 
 They correspond to the data structure of EDU, relation, sentence, paragraph, and chapter respectively. They can be regarded as a list container containing lists. Paragraph represents the chapter tree and can be visualized by calling the draw method.
+
+
+#### Evaluations
+
+In this paper, we report our performance based on the **soft** micro-averaged F1-score as detailed in
+the programs. In addition, this project also contains an unpublished **strict** evaluation method, and 
+one can directly use these evaluation scripts for performance calculation.
+
 
 ```
 
