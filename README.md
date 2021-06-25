@@ -61,13 +61,13 @@ Run the following command for DRS parsing:
 python3 parser.py source save [-schema schema_name] [-segmenter_name segmenter_name] [--encoding utf-8] [--draw] [--use_gpu]
 ```
 
-- source： 输入为文本文件路径，每行包含一个段落 / the path of input texts where each line refers to a paragraph;
-- save: 存储 xml 文件路径，输入文本文件中的每一行会解析为一个段落节点 / path to save the parse trees;
-- schema： 解析策略，目前实现了两种解析策略，`topdown` 和 `shiftreduce`，具体实现在 pipeline.py 中，默认使用 `topdown` / different parsing stratedies;
-- segmenter_name：EDU 自动分割器名称，目前实现了两个 EDU 分割器, `svm` 和 `gcn`，默认使用 `svm` / different segmentation stratedies;
-- encoding： 输入和输出文件的编码，默认 UTF-8 / encoding format, UTF-8 in default;
-- draw: 是否在解析完每个段落后可视化篇章树，需要有图形界面和安装了 tkinter / whether draw the tree or not;
-- use_gpu：是否使用 GPU 进行解析，默认使用 cpu  / use GPU or not;
+- source: the path of input texts where each line refers to a paragraph;
+- save: path to save the parse trees;
+- schema: `shiftreduce` and `topdown` / different parsing strategies;
+- segmenter_name: different segmentation strategies;
+- encoding: encoding format, UTF-8 in default;
+- draw: whether draw the tree or not through the tkinter tool;
+- use_gpu：use GPU or not.
 
 E.g., parsing the three paragraphs in `sample.txt` in a top-down mode with GCN-based EDU segmentation and drawing them out:
 
