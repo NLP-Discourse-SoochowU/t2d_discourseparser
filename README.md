@@ -124,7 +124,8 @@ They correspond to the data structure of EDU, relation, sentence, paragraph, and
 
 In this paper, we report our performance based on the **soft** micro-averaged F1-score as detailed in
 the programs. In addition, this project also contains an unpublished **strict** evaluation method, and 
-one can directly use these evaluation scripts for performance calculation.
+the performance of this parser under the strict evaluation is (84.0, 59.0, 54.2, 47.8) (macro-averaged).
+One can directly use these evaluation scripts for performance calculation.
 
 
 ```
