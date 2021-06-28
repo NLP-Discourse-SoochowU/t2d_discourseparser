@@ -116,15 +116,15 @@ tree in the Chinese CDTB corpus, and it can be visualized by calling the draw me
 In this paper, we report our performance based on the **soft** micro-averaged F1-score as detailed in
 the programs. In addition, this project also contains an unpublished **strict** evaluation method where 
 the split position is also taken into consideration for more accurate NR prediction performance. 
-Specifically, given two adjacent text spans (1, 5) and (6, 8), the upper-layer span is (1, 8), and we directly
-take the predicted boundary pair (1, 8) as a correct prediction in the original soft metric, and the 
-corresponding Nucl and Rel between the two child nodes are also assigned. Notably, if the predicted split 
+Specifically, given two adjacent gold standard text spans (1, 5) and (6, 8), the upper-layer span is (1, 8), 
+and we judge the correction of a predicted span only according to the span boundaries 1 and 8 in the original 
+soft metric, and the NR tag between the two child nodes is also assigned. Moreover, if the predicted split 
 position is 3 and the obtained child spans are (1, 3) and (4, 8), then the soft metric still thinks the span
 is correct, and the NR relation between (1, 3) and (4, 8) are predicted as that between (1, 5) and (6, 8) for
-evaluation. Obviously, the soft metric is far from regorous. In this project, we also display a strict evaluation
-method where both the span boundaries and the split points are considered for span prediction evaluation. And 
+evaluation. Obviously, the soft metric is far from rigorous. In this project, we also present a strict evaluation
+method where both the span boundaries and the split point are considered for span prediction evaluation. And 
 the performance of this top-down DRS parser under the strict evaluation is **(84.0, 59.0, 54.2, 47.8) (macro-averaged)**.
-And one can directly use these evaluation scripts for performance calculation.
+One can directly use these evaluation scripts for performance calculation.
 
 
 ```
