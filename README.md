@@ -1,7 +1,6 @@
 ## Top-down Text-level DRS Parser
 
-I often fail to access GitHub, so email me directly if you have any questions.
-E-mail Address: zzlynx@outlook.com.
+I often fail to access GitHub, so just send emails to zzlynx@outlook.com (Longyin Zhang) if you have any questions.
 
 <b>-- General Information</b>
 ```
@@ -54,7 +53,7 @@ E-mail Address: zzlynx@outlook.com.
 
 ##### Project Functions
 
-1. DRS parsing
+1. discourse rhetorical structure parsing
 
 Run the following command for DRS parsing:
 ```shell
@@ -85,7 +84,7 @@ Run the following command for performance evaluation:
 
 3. model training
 
-Taking EDU segmentation for eaxmple:
+Taking the EDU segmenter for example:
 ```shell
 python -m segmenter.gcn.train data/CDTB -model_save data/models/segmenter.gcn.model -pretrained data/pretrained/sgns.renmin.word --ctb_dir data/CTB --cache_dir data/cache --w2v_freeze --use_gpu
 ```
@@ -95,27 +94,37 @@ python -m segmenter.gcn.train data/CDTB -model_save data/models/segmenter.gcn.mo
 
 1. SegmenterI
 
-The splitter has three interfaces for segmenting paragraphs into sentences, segmenting sentences into EDU, and segmenting paragraphs into EDU in one step.
+The splitter has three interfaces for segmenting paragraphs into sentences, segmenting sentences into EDU, and segmenting paragraphs into EDU in one step, respectively.
 
 2. ParserI
 
-The parser interface, including a method to organize paragraphs containing only EDU into a chapter tree.
+The parser interface transforms Chinese paragraph EDUs into a discourse tree.
 
 3. PipelineI
 
-Pipeline class, which assembles SegmenterI and ParserI as a complete text structure parser.
+Pipeline class, which assembles SegmenterI and ParserI as a complete DRS parser.
 
 4. EDU, Relation, Sentence, Paragraph, and Discourse
 
-They correspond to the data structure of EDU, relation, sentence, paragraph, and chapter respectively. They can be regarded as a list container containing lists. Paragraph represents the chapter tree and can be visualized by calling the draw method.
+They correspond to the data structures of EDU, relation, sentence, paragraph, and discourse, respectively, 
+which can also be regarded as list containers. Among them, the Paragraph structure represents the discourse 
+tree in the Chinese CDTB corpus, and it can be visualized by calling the draw method.
 
 
 #### Evaluations
 
 In this paper, we report our performance based on the **soft** micro-averaged F1-score as detailed in
-the programs. In addition, this project also contains an unpublished **strict** evaluation method, and 
-the performance of this parser under the strict evaluation is (84.0, 59.0, 54.2, 47.8) (macro-averaged).
-One can directly use these evaluation scripts for performance calculation.
+the programs. In addition, this project also contains an unpublished **strict** evaluation method where 
+the split position is also taken into consideration for more accurate NR prediction performance. 
+Specifically, given two adjacent text spans (1, 5) and (6, 8), the upper-layer span is (1, 8), and we directly
+take the predicted boundary pair (1, 8) as a correct prediction in the original soft metric, and the 
+corresponding Nucl and Rel between the two child nodes are also assigned. Notably, if the predicted split 
+position is 3 and the obtained child spans are (1, 3) and (4, 8), then the soft metric still thinks the span
+is correct, and the NR relation between (1, 3) and (4, 8) are predicted as that between (1, 5) and (6, 8) for
+evaluation. Obviously, the soft metric is far from regorous. In this project, we also display a strict evaluation
+method where both the span boundaries and the split points are considered for span prediction evaluation. And 
+the performance of this top-down DRS parser under the strict evaluation is **(84.0, 59.0, 54.2, 47.8) (macro-averaged)**.
+And one can directly use these evaluation scripts for performance calculation.
 
 
 ```
