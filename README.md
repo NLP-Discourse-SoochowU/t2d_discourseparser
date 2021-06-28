@@ -69,11 +69,6 @@ python3 parser.py source save [-schema schema_name] [-segmenter_name segmenter_n
 - draw: whether draw the tree or not through the tkinter tool;
 - use_gpu：use GPU or not.
 
-E.g., parsing the three paragraphs in `sample.txt` in a top-down mode with GCN-based EDU segmentation and drawing them out:
-
-```shell
-python3 parse.py sample.txt sample.xml -schema topdown -segmenter_name gcn --encoding utf-8 --draw
-```
 
 2. performance evaluation
 
@@ -88,16 +83,11 @@ Run the following command for performance evaluation:
 - use_gold_edu: whether use Gold EDU or not;
 - use_gpu: use GPU or not.
 
-E.g., if use gold EDU and gold syntax for top-down parsing, run:
-```shell
-python3 evaluate.py data/CDTB --ctb_dir data/CTB --cache_dir data/cache  -schema topdown --use_gold_edu
-```
-
 3. model training
 
 Taking EDU segmentation for eaxmple:
 ```shell
-python -m segmenter.gcn.train /data/csun/ChineseDiscourseParser/data/CDTB -model_save data/models/segmenter.gcn.model -pretrained data/pretrained/sgns.renmin.word --ctb_dir data/CTB --cache_dir data/cache --w2v_freeze --use_gpu
+python -m segmenter.gcn.train data/CDTB -model_save data/models/segmenter.gcn.model -pretrained data/pretrained/sgns.renmin.word --ctb_dir data/CTB --cache_dir data/cache --w2v_freeze --use_gpu
 ```
 
 
