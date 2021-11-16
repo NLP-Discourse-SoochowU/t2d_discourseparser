@@ -126,6 +126,9 @@ method where both the span boundaries and the split point are considered for spa
 the performance of this top-down DRS parser under the strict evaluation is **(84.0, 59.0, 54.2, 47.8) (macro-averaged)**.
 One can directly use these evaluation scripts for performance calculation.
 
+#### Application
+
+We've published a pre-trained end-to-end DRS parser at https://pan.baidu.com/s/1wY4em6ViF0T8LfZPAzTuOg, and the passcode is n6hx.
 
 ```
 
