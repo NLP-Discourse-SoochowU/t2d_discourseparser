@@ -1,0 +1,36 @@
+RST-DT does not have an established dev set, so we extracted 34 articles from the training set to serve as the dev corpus. 
+Since RST-DT is not for free use, I provide the names of these articles as follows:
+wsj_0614
+wsj_0615
+wsj_0617
+wsj_0620
+wsj_0624
+wsj_0635
+wsj_0651
+wsj_0652
+wsj_0662
+wsj_0671
+wsj_0687
+wsj_0688
+wsj_0692
+wsj_1100
+wsj_1101
+wsj_1119
+wsj_1133
+wsj_1149
+wsj_1162
+wsj_1193
+wsj_1194
+wsj_1195
+wsj_1313
+wsj_1337
+wsj_1341
+wsj_1344
+wsj_1355
+wsj_1962
+wsj_1970
+wsj_1973
+wsj_2365
+wsj_2367
+wsj_2393
+wsj_2396
